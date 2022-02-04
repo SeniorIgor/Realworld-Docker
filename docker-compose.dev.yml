@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  api:
+    command: npm run dev
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./api/src:/usr/src/app/src
+      - ./api/nodemon.json:/usr/src/app/nodemon.json

@@ -7,3 +7,5 @@ export const connect = () => {
 
   return mongoose.connection;
 };
+
+export const disconnect = () => mongoose.disconnect();

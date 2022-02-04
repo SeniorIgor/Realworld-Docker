@@ -1,8 +1,13 @@
+# PROD # docker-compose up --build
+# DEV # docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+
 version: '3'
 
 services:
   api:
-    build: ./api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     command: npm run start
     restart: unless-stopped
     ports:
@@ -16,3 +21,8 @@ services:
 
   api_database:
     image: mongo:latest
+    volumes:
+      - mongo_api:/data/db
+
+volumes:
+  mongo_api:

@@ -1,9 +1,10 @@
 /** https://cloudnweb.dev/2019/09/building-a-production-ready-node-js-app-with-typescript-and-docker/ */
+// "exec": "ts-node ./src/index.ts"
 
 import express, { Application, Request, Response } from 'express';
 import { connect } from './database/database';
 import { PORT, HOST } from './configuration';
-import { createDummyUsers } from './scripts/createDummyUsers';
+// import { UserModel } from './database/user/user.model';
 
 const app: Application = express();
 
@@ -17,7 +18,15 @@ const startServer = () => {
     console.log(`On host: ${HOST}`);
   });
 
-  createDummyUsers();
+  console.log('hello !!!');
+
+  // UserModel.find((err, users) => {
+  //   if (err) {
+  //     return console.log(err);
+  //   }
+
+  //   console.log(users);
+  // });
 };
 
 connect()
