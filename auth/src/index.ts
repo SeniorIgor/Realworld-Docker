@@ -1,6 +1,3 @@
-/** https://cloudnweb.dev/2019/09/building-a-production-ready-node-js-app-with-typescript-and-docker/ */
-// "exec": "ts-node ./src/index.ts"
-
 import express, { Application, Request, Response } from 'express';
 import { connect } from './database/database';
 import { PORT, HOST } from './configuration';
@@ -8,12 +5,12 @@ import { PORT, HOST } from './configuration';
 const app: Application = express();
 
 app.get('/test', (_: Request, res: Response) => {
-  res.send('Our api server is working correctly');
+  res.send('Our auth server is working correctly');
 });
 
 const startServer = () => {
   app.listen(PORT, () => {
-    console.log(`🚀 API Server is running at http://localhost:${PORT}`);
+    console.log(`🚀 AUTH Server is running at http://localhost:${PORT}`);
     console.log(`On host: ${HOST}`);
   });
 
