@@ -2,13 +2,29 @@
 // "exec": "ts-node ./src/index.ts"
 
 import express, { Application, Request, Response } from 'express';
+import axios from 'axios';
+
 import { connect } from './database/database';
-import { PORT, HOST } from './configuration';
+import { PORT, HOST, AUTH_API_URL } from './configuration';
+
+interface User {
+  id: string;
+  email: string;
+}
 
 const app: Application = express();
 
 app.get('/test', (_: Request, res: Response) => {
   res.send('Our api server is working correctly');
+});
+
+app.get('/testWithCurrentUser', (_: Request, res: Response) => {
+  axios.get<User>(`${AUTH_API_URL}/currentUser`).then((response) => {
+    res.json({
+      testWithCurrentUser: true,
+      user: response.data,
+    });
+  });
 });
 
 const startServer = () => {
